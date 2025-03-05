@@ -54,6 +54,8 @@ dependencies {
     implementation (libs.squareup.retrofit)
     implementation (libs.converter.gson)
     implementation(libs.coil.compose)
+    implementation(libs.coil.compose.v260)
+    implementation(libs.androidx.navigation.runtime.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
