@@ -137,7 +137,9 @@ fun CountriesApp(modifier: Modifier ) {
     ) {
         composable(route = "home") { HomeScreen( modifier = Modifier,
                 navController = navController) }
-        composable(route = "details") { DetailScreen(navController) }
+         composable(route = "details/{countryName}") { backStackEntry ->
+            val countryName = backStackEntry.arguments?.getString("countryName")
+            DetailScreen(countryName, navController) }
         composable(route = "contact") { ContactScreen(navController) }
         composable(route = "settings") { SettingsScreen(navController) }
     }
