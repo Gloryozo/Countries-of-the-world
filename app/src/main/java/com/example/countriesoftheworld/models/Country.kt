@@ -5,18 +5,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 data class Country(
-    val name: String,
+    val name: Name,
     val population: Long,
     val region: String,
     val flags: Flags
 )
+data class Name(val common: String)
 data class Flags(val png: String)
 
-const val BASE_URL = "https://restcountries.com"
+const val BASE_URL = "https://restcountries.com/"
 
 interface CountryApi{
-    @GET("/v3.1/all")
-    suspend fun getCountry(): Country
+    @GET("v3.1/all")
+    suspend fun getCountry(): List<Country>
 
     companion object{
         var countryService: CountryApi? = null

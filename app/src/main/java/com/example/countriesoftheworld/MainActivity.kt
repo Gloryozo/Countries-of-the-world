@@ -135,7 +135,8 @@ fun CountriesApp(modifier: Modifier ) {
         navController = navController,
         startDestination = "home"
     ) {
-        composable(route = "home") { HomeScreen(navController) }
+        composable(route = "home") { HomeScreen( modifier = Modifier,
+                navController = navController) }
         composable(route = "details") { DetailScreen(navController) }
         composable(route = "contact") { ContactScreen(navController) }
         composable(route = "settings") { SettingsScreen(navController) }
