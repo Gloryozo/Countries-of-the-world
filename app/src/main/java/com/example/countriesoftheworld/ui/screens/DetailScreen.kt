@@ -7,15 +7,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
 import com.example.countriesoftheworld.ScreenTopBar
 import com.example.countriesoftheworld.models.Country
+import com.example.countriesoftheworld.ui.components.ShowError
+import com.example.countriesoftheworld.ui.components.ShowLoader
 import com.example.countriesoftheworld.viewmodels.CountryViewModel
 
 @Composable
@@ -33,8 +33,17 @@ fun DetailScreen(countryId: String?, navController: NavController, countryViewMo
         CountryDetails(
             modifier = Modifier.padding(innerPadding),
             country = countryViewModel.countryDetail)
+        when {
+            countryViewModel.isLoading -> ShowLoader()
+            countryViewModel.error != null -> ShowError(countryViewModel.error)
+            else -> CountryDetails( 
+                modifier = Modifier, 
+                country = countryViewModel.countryDetail)
+        }
     }
 }
+
+
 
 @Composable
 fun CountryDetails(modifier: Modifier = Modifier, country: Country?) {

@@ -14,6 +14,8 @@ import kotlinx.coroutines.launch
 class CountryViewModel: ViewModel() {
     var country = mutableStateListOf<Country>()
     var countryDetail: Country? by mutableStateOf(null)
+    var isLoading by mutableStateOf(false)
+    var error by mutableStateOf<String?>(null)
 
     init {
         getCountryList()
@@ -34,16 +36,25 @@ class CountryViewModel: ViewModel() {
     // New function to get country details
     fun getCountryDetail(countryId: String) {
         viewModelScope.launch {
+            isLoading = true
+            error = null
             try {
                 val countryApi = CountryApi.getInstance()
-                val result = countryApi.getCountryDetail(countryId) // Assuming this method exists
-                countryDetail = result
+                val response = countryApi.getCountryDetail(countryId)
+                countryDetail = response.firstOrNull()
+                if (countryDetail == null) error = "Country not found"
             } catch (e: Exception) {
-                Log.e("VIEWMODEL", "Error fetching country details: ${e.message}")
+                error = e.message ?: "Unknown error"
+                Log.e("DETAIL", "Error fetching country details: ${e.message}")
+                countryDetail = null
+            } finally {
+                isLoading = false
             }
         }
+            }
+
     }
-}
+
 
 
 
