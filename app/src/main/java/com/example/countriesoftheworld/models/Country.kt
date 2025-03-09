@@ -18,6 +18,7 @@ const val BASE_URL = "https://restcountries.com/"
 interface CountryApi{
     @GET("v3.1/all")
     suspend fun getCountry(): List<Country>
+    abstract fun getCountryDetail(countryId: String): Country?
 
     companion object{
         var countryService: CountryApi? = null
