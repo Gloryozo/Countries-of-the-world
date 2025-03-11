@@ -23,6 +23,8 @@ class CountryViewModel: ViewModel() {
     // Make public and call from HomeScreen
     fun getCountryList(){
         viewModelScope.launch{
+            isLoading = true
+            error = null
             try{
                 val countryApi = CountryApi.getInstance()
                 val result = countryApi.getCountry()
@@ -30,6 +32,8 @@ class CountryViewModel: ViewModel() {
                 country.addAll(result)
             }catch(e: Exception){
                 Log.e("VIEWMODEL", "Error: ${e.message}")
+            } finally {
+                isLoading = false
             }
         }
     }

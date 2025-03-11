@@ -19,7 +19,11 @@ import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.countriesoftheworld.MainTopAppBar
 import com.example.countriesoftheworld.models.Country
+import com.example.countriesoftheworld.ui.components.ShowError
+import com.example.countriesoftheworld.ui.components.ShowLoader
 import com.example.countriesoftheworld.viewmodels.CountryViewModel
+
+
 
 @Composable
 fun HomeScreen(modifier: Modifier, navController: NavController, countryViewModel: CountryViewModel = viewModel()) {
@@ -29,12 +33,15 @@ fun HomeScreen(modifier: Modifier, navController: NavController, countryViewMode
     Scaffold(
         topBar = { MainTopAppBar("Countries of the world", navController) },
     ) { innerPadding ->
-        // this calls CountryList composable
-        CountryList(
-            modifier = Modifier.padding(innerPadding),
-            country = countryViewModel.country,
-            navController = navController
-        )
+        when {
+            countryViewModel.isLoading -> ShowLoader()
+            countryViewModel.error != null -> ShowError(countryViewModel.error)
+            else -> CountryList(
+                modifier = Modifier.padding(innerPadding),// this calls CountryList composable
+                country = countryViewModel.country,
+                navController = navController
+            )
+        }
     }
 }
 
@@ -54,8 +61,8 @@ fun CountryList(modifier: Modifier = Modifier, country: List<Country>,navControl
                     painter = rememberAsyncImagePainter(model = countrylist.flags.png),
                     contentDescription = "${countrylist.name.common} flag",
                     modifier = Modifier
-                        .size(50.dp)
-                        .padding(end = 16.dp, start = 16.dp)
+                        .size(100.dp)
+                        .padding(horizontal = 16.dp)
                 )
                 Text(
                     text = countrylist.name.common,

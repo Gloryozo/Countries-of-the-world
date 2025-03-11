@@ -110,11 +110,6 @@ fun MainTopAppBar(title: String, navController: NavController) {
                 onDismissRequest = { expanded = false }
             ) {
                 DropdownMenuItem(
-                    text = { Text("Details") },
-                    onClick = { navController.navigate("details") }
-
-                )
-                DropdownMenuItem(
                     text = { Text("Contact") },
                     onClick = { navController.navigate("contact")}
                 )

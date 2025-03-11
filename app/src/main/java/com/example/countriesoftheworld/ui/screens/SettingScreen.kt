@@ -46,11 +46,7 @@ fun SettingsDetail(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start
     ) {
-        Text(
-            text = "Settings",
-            style = MaterialTheme.typography.titleLarge
-        )
-        Spacer(modifier = Modifier.height(16.dp))
+       Spacer(modifier = Modifier.height(16.dp))
 
         // Dark Mode Row
         SettingsRow(
@@ -66,7 +62,7 @@ fun SettingsDetail(modifier: Modifier = Modifier) {
             text = "Notifications"
         )
 
-        // Log Out Button
+        // Continue Button
         Button(
             modifier = Modifier
                 .fillMaxWidth()
@@ -74,7 +70,7 @@ fun SettingsDetail(modifier: Modifier = Modifier) {
             onClick = { /* Handle logout logic */ }
         ) {
             Text(
-                text = "Log Out",
+                text = "Continue",
                 style = MaterialTheme.typography.bodyMedium
             )
         }

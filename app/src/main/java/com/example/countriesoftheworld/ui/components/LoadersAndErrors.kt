@@ -43,6 +43,6 @@ fun ShowLoader() {
     ) {
         CircularProgressIndicator()
         Spacer(modifier = Modifier.height(8.dp))
-        Text("Loading country details...")
+        Text("Loading country ...")
     }
 }

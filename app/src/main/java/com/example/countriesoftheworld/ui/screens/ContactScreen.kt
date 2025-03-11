@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.countriesoftheworld.ScreenTopBar
@@ -31,24 +32,29 @@ fun ContactDetail(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         Text(
-            text = "Contact Us",
+            text = "For more information Contact Us",
             style = MaterialTheme.typography.titleLarge
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "Email: support@countryapp.com",
+            text = "Email: support@countryoftheworldapp.com",
+            fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.bodyMedium
+
+        )
+        Text(
+            text = "Phone: +358 123 456 7890",
+            fontWeight = FontWeight.Bold,
             style = MaterialTheme.typography.bodyMedium
         )
         Text(
-            text = "Phone: +1 123 456 7890",
-            style = MaterialTheme.typography.bodyMedium
-        )
-        Text(
-            text = "Address: 123 Main St, Anytown, USA",
+            text = "Address: 123 Pää-Tie, Oulu, Finland",
+            fontWeight = FontWeight.Bold,
             style = MaterialTheme.typography.bodyMedium
         )
     }
