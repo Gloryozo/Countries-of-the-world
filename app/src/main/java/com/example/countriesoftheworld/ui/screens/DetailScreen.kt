@@ -20,11 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import com.example.countriesoftheworld.R
 import com.example.countriesoftheworld.ScreenTopBar
 import com.example.countriesoftheworld.models.Country
 import com.example.countriesoftheworld.ui.components.ShowError
@@ -79,8 +81,8 @@ fun CountryDetails(modifier: Modifier = Modifier, country: Country?) {
                     painter = rememberAsyncImagePainter(country?.flags?.png),
                     contentDescription = "Flag of ${country?.name?.common}",
                     modifier = Modifier
-                            .fillMaxWidth(0.8f)
-                        .aspectRatio(3f/2f)
+                        .fillMaxWidth(0.8f)
+                        .aspectRatio(3f / 2f)
                         .size(400.dp)
                         .padding(8.dp),
                     contentScale = ContentScale.Fit
@@ -93,7 +95,7 @@ fun CountryDetails(modifier: Modifier = Modifier, country: Country?) {
             }
         }
 
-        // Info Card
+        // Country details Card
         Card(
             modifier = Modifier.fillMaxWidth(),
             elevation = CardDefaults.cardElevation(4.dp)
@@ -103,10 +105,10 @@ fun CountryDetails(modifier: Modifier = Modifier, country: Country?) {
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 country?.let {
-                    DetailRow("Capital: ", it.capital?.firstOrNull())
-                    DetailRow("Population: ", it.population?.formatWithCommas())
-                    DetailRow("Region: ", it.region)
-                    DetailRow("Languages: ", it.languages?.values?.joinToString())
+                    DetailRow(stringResource(R.string.capital), it.capital?.firstOrNull())
+                    DetailRow(stringResource(R.string.population), it.population?.formatWithCommas())
+                    DetailRow(stringResource(R.string.region), it.region)
+                    DetailRow(stringResource(R.string.languages), it.languages?.values?.joinToString())
                    } ?: Text("No country data available", style = MaterialTheme.typography.bodyMedium)
             }
         }

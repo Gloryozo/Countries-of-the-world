@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Countries Of The World</string>
+    <string name="for_more_information_contact_us">For more information Contact Us</string>
+    <string name="email_support_countryoftheworldapp_com">Email: support@countryoftheworldapp.com</string>
+    <string name="phone_358_123_456_7890">Phone: +358 123 456 7890</string>
+    <string name="address">Address: 123 Pää-Tie, Oulu, Finland</string>
+    <string name="capital">"Capital: "</string>
+    <string name="population">"Population: "</string>
+    <string name="region">"Region: "</string>
+    <string name="languages">"Languages: "</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="notifications">Notifications</string>
+    <string name="contact">Contact</string>
+    <string name="settings">Settings</string>
 </resources>

@@ -19,8 +19,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.countriesoftheworld.R
 import com.example.countriesoftheworld.ScreenTopBar
 
 @Composable
@@ -52,14 +54,14 @@ fun SettingsDetail(modifier: Modifier = Modifier) {
         SettingsRow(
             checked = darkModeState.value,
             onCheckedChange = { darkModeState.value = it },
-            text = "Dark Mode"
+            text = stringResource(R.string.dark_mode)
         )
 
         // Notifications Row
         SettingsRow(
             checked = notificationState.value,
             onCheckedChange = { notificationState.value = it },
-            text = "Notifications"
+            text = stringResource(R.string.notifications)
         )
 
         // Continue Button
@@ -70,7 +72,7 @@ fun SettingsDetail(modifier: Modifier = Modifier) {
             onClick = { /* Handle logout logic */ }
         ) {
             Text(
-                text = "Continue",
+                text = "continue",
                 style = MaterialTheme.typography.bodyMedium
             )
         }
